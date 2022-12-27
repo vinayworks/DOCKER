@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
+  workflow_dispatch:
 
 jobs:
 
@@ -15,4 +17,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    working-directory: react-docker
+      run: docker build . --file Dockerfile --tag my-react-docker:$(date +%s)
